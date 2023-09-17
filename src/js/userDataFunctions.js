@@ -1,12 +1,13 @@
 const userDataFunctions = (function () {
   let userData = {
+    bookIdArr: [],
     booksData: [],
   };
 
   if (!localStorage.hasOwnProperty("bookshelfApp")) {
     updateLocalStorage();
   } else {
-    userData = JSON.parse(localStorage.getItem("bookshelf"));
+    userData = JSON.parse(localStorage.getItem("bookshelfApp"));
   }
 
   function updateLocalStorage() {
@@ -15,18 +16,20 @@ const userDataFunctions = (function () {
   }
 
   function addBook(bookInfo) {
-    alert(bookInfo);
-  }
+    userData = {
+      ...userData,
+      bookIdArr: [...userData.bookIdArr, bookInfo.id],
+      booksData: [...userData.booksData, bookInfo],
+    };
 
-  function removeBook(bookId) {
-    const newBooksData = userData.booksdata.filter(
-      (item) => item.id !== bookId
-    );
-    userData = { ...userData, booksData: newBooksData };
+    console.log(userData);
 
     updateLocalStorage();
   }
 
   events.on("addBook", addBook);
-  events.on("removeBook", removeBook);
+
+  return {
+    userData,
+  };
 })();

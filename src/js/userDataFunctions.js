@@ -27,7 +27,17 @@ const userDataFunctions = (function () {
     updateLocalStorage();
   }
 
+  function removeBook(bookId) {
+    userData = {
+      ...userData,
+      bookIdArr: userData.bookIdArr.filter((item) => item !== bookId),
+      booksData: userData.booksData.filter((item) => item.id !== bookId),
+    };
+    updateLocalStorage();
+  }
+
   events.on("addBook", addBook);
+  events.on("removeBook", removeBook);
 
   return {
     userData,

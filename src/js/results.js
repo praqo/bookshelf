@@ -1,6 +1,6 @@
 const results = (function () {
-  if (document.querySelector(".js-search-results")) {
-    const searchResultsContainer = document.querySelector(".js-search-results");
+  if (document.querySelector(".js-results")) {
+    const resultsContainer = document.querySelector(".js-results");
     const userData = userDataFunctions.userData;
 
     function updateButton(buttonClicked, isAdding) {
@@ -53,11 +53,7 @@ const results = (function () {
         </div>`;
       });
 
-      searchResultsContainer.innerHTML = htmlToAppend;
-
-      document
-        .querySelectorAll(".book-title")
-        .forEach((item) => item.addEventListener("click", emitAddBook));
+      resultsContainer.innerHTML = htmlToAppend;
 
       document.querySelectorAll(".js-addRemovebook").forEach((item) => {
         if (item.classList.contains("add-button")) {

@@ -19,8 +19,13 @@ const search = (function () {
     function searchBooks(e) {
       e.preventDefault();
 
+      if (!bookSearchInput.value.replace(/ /g, "")) {
+        return;
+      }
       const searchValue = bookSearchInput.value.replace(/ /g, "+");
       const data = fetchData(apiUrl + searchValue);
+
+      console.log("searching...");
     }
 
     bookSearchForm.addEventListener("submit", searchBooks);

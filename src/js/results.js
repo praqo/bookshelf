@@ -1,7 +1,7 @@
 const results = (function () {
   if (document.querySelector(".js-results")) {
     const resultsContainer = document.querySelector(".js-results");
-    const userData = userDataFunctions.userData;
+    let userData = userDataFunctions.userData;
 
     function updateButton(buttonClicked, isAdding) {
       if (isAdding) {
@@ -36,7 +36,8 @@ const results = (function () {
     }
 
     function populateData(data) {
-      let htmlToAppend;
+      let htmlToAppend = "";
+      console.log(htmlToAppend);
       data.docs.forEach((item) => {
         htmlToAppend += `<div class='single-book' data-bookid="${item.key.slice(
           7
@@ -64,6 +65,11 @@ const results = (function () {
       });
     }
 
+    function updateUserData(data) {
+      userData = data;
+    }
+
     events.on("searchDataChange", populateData);
+    events.on("userDataChange", updateUserData);
   }
 })();

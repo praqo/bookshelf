@@ -1,11 +1,13 @@
 const search = (function () {
   if (document.querySelector(".js-book-search")) {
+    const body = document.querySelector("body");
     const bookSearchForm = document.querySelector(".js-book-search");
     const bookSearchInput = document.querySelector("#bookSearch");
 
     const apiUrl = "http://openlibrary.org/search.json?q=";
 
     async function fetchData(url) {
+      pageStateChange("search");
       try {
         const response = await fetch(url);
         const data = await response.json();
@@ -28,6 +30,21 @@ const search = (function () {
       console.log("searching...");
     }
 
+    function pageStateChange(page) {
+      const pagesArray = ["home", "search", "results", "bookshelf"];
+      pagesArray.forEach((item) => {
+        if (item !== page) {
+          body.classList.remove(item);
+        } else {
+          body.classList.add(item);
+        }
+      });
+    }
+
     bookSearchForm.addEventListener("submit", searchBooks);
+
+    return {
+      pageStateChange,
+    };
   }
 })();

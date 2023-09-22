@@ -1,5 +1,6 @@
 const results = (function () {
   if (document.querySelector(".js-results")) {
+    const body = document.querySelector("body");
     const resultsContainer = document.querySelector(".js-results");
     let userData = userDataFunctions.userData;
 
@@ -13,7 +14,8 @@ const results = (function () {
 
     function emitRemoveBook(e) {
       const buttonClicked = e.currentTarget;
-      const parentEl = e.currentTarget.parentNode;
+      const parentEl =
+        e.currentTarget.parentNode.parentNode.parentNode.parentNode;
 
       updateButton(buttonClicked, false);
 
@@ -22,7 +24,7 @@ const results = (function () {
 
     function emitAddBook(e) {
       const buttonClicked = e.currentTarget;
-      const parentEl = e.currentTarget.parentNode;
+      const parentEl = e.currentTarget.parentNode.parentNode.parentNode;
       const bookInfo = {
         id: parentEl.dataset.bookid,
         title: parentEl.dataset.booktitle,
@@ -37,21 +39,18 @@ const results = (function () {
 
     function populateData(data) {
       let htmlToAppend = "";
-      console.log(htmlToAppend);
       data.docs.forEach((item) => {
-        htmlToAppend += `<div class='single-book' data-bookid="${item.key.slice(
-          7
-        )}" data-booktitle="${item.title}" data-bookauthor="${
-          item.author_name ? item.author_name[0] : ""
-        }" data-bookcover="${
-          item.cover_edition_key ? item.cover_edition_key : "default.jpg"
-        }"><h3 class='book-title'>${item.title}</h3>
-        ${
-          userData.bookIdArr.includes(item.key.slice(7))
-            ? `<button class="js-addRemovebook remove-button">Remove from bookshelf</button>`
-            : `<button class="js-addRemovebook add-button">Add to bookshelf</button>`
-        }
-        </div>`;
+        const itemInfo = {
+          id: item.key.slice(7),
+          title: item.title,
+          author: `${item.author_name ? item.author_name[0] : ""}`,
+          cover: `${
+            item.cover_edition_key
+              ? `https://covers.openlibrary.org/b/olid/${item.cover_edition_key}-L.jpg`
+              : "https://openlibrary.org/images/icons/avatar_book-lg.png"
+          }`,
+        };
+        htmlToAppend += createBookEl(itemInfo);
       });
 
       resultsContainer.innerHTML = htmlToAppend;
@@ -63,6 +62,36 @@ const results = (function () {
           item.addEventListener("click", emitRemoveBook);
         }
       });
+
+      search.pageStateChange("results");
+    }
+
+    function createBookEl(item) {
+      return `<a class="book-wrapper" data-bookid="${
+        item.id
+      }" data-booktitle="${item.title}" data-bookauthor="${
+        item.author
+      }" data-bookcover="${item.cover}">
+        <div class="book-image-container">
+          <div
+            class="book-image"
+            style="
+              background-image: url(${item.cover});
+            "
+          ></div>
+        </div>
+        <div class="book-info">
+          <h3 class="book-title">${item.title}<br />${item.author}</h3>
+          <div class="book-subtitle">
+          </div>
+          <div class="book-details">${
+            userData.bookIdArr.includes(item.id)
+              ? `<button class="js-addRemovebook remove-button">Remove from bookshelf</button>`
+              : `<button class="js-addRemovebook add-button">Add to bookshelf</button>`
+          }</div>
+          <time class="book-id">${item.id}</time>
+        </div>
+      </a>`;
     }
 
     function updateUserData(data) {
@@ -71,5 +100,9 @@ const results = (function () {
 
     events.on("searchDataChange", populateData);
     events.on("userDataChange", updateUserData);
+
+    return {
+      createBookEl,
+    };
   }
 })();

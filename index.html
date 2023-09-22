@@ -3,12 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="dist/css/bookshelf.css" />
     <title>Bookshelf | organize your books digitally</title>
   </head>
   <body>
+    <header class="main-header">
+      <div class="logo-container">
+        <img src="" alt="" class="log" />
+      </div>
+      <div class="header-form">
+        <form class="book-search-form js-book-search">
+          <label for="bookSearch">Search the open library</label>
+          <input id="bookSearch" type="text" />
+          <button class="button">Search</button>
+        </form>
+      </div>
+      <nav class="header-nav">
+        <a href="#" class="js-bookshelf-link">My Bookshelf</a>
+      </nav>
+    </header>
     <div class="hero-area">
-      <a href="#" class="js-bookshelf-link">My Bookshelf</a>
       <form class="book-search-form js-book-search">
         <label for="bookSearch">Search the open library</label>
         <input id="bookSearch" type="text" />

@@ -2,7 +2,7 @@ const bookshelf = (function () {
   if (document.querySelector(".js-results")) {
     const body = document.querySelector("body");
     const bookshelfContainer = document.querySelector(".js-results");
-    const bookshelfLink = document.querySelector(".js-bookshelf-link");
+    const bookshelfLink = document.querySelector('[data-pageLink="bookshelf"]');
     let userData = userDataFunctions.userData;
 
     function emitRemoveBook(e) {

@@ -4,37 +4,79 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&family=Courgette&family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
     />
 
     <link rel="stylesheet" href="dist/css/bookshelf.css" />
     <title>Bookshelf | organize your books digitally</title>
   </head>
-  <body>
+  <body class="home">
     <header class="main-header">
-      <div class="logo-container">
-        <img src="" alt="" class="log" />
+      <div class="container">
+        <div class="main-header-inner">
+          <div class="logo-container">
+            <h4 class="logo">Bookshelf</h4>
+          </div>
+
+          <nav class="header-nav">
+            <a href="#" class="nav-link home-link" data-pageLink="home">Home</a>
+            <span class="link-seperator">/</span>
+            <a
+              href="#"
+              class="nav-link bookshelf-link"
+              data-pageLink="bookshelf"
+              >My Bookshelf</a
+            >
+          </nav>
+          <div class="header-form">
+            <form class="book-search-form js-book-search">
+              <div class="form-element">
+                <label for="bookSearch">Look for books</label>
+                <div class="inline-input">
+                  <input id="bookSearch" type="text" />
+                  <button class="button-search">Search</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
-      <div class="header-form">
-        <form class="book-search-form js-book-search">
-          <label for="bookSearch">Search the open library</label>
-          <input id="bookSearch" type="text" />
-          <button class="button">Search</button>
-        </form>
-      </div>
-      <nav class="header-nav">
-        <a href="#" class="js-bookshelf-link">My Bookshelf</a>
-      </nav>
     </header>
     <div class="hero-area">
-      <form class="book-search-form js-book-search">
-        <label for="bookSearch">Search the open library</label>
-        <input id="bookSearch" type="text" />
-        <button class="button">Search</button>
-      </form>
+      <div class="container">
+        <div class="hero-area-inner">
+          <div class="hero-image-container">
+            <h1 class="hero-title">Start adding to your bookshelf</h1>
+            <img
+              class="hero-image"
+              src="dist/images/bookshelf.png"
+              alt="a bookshelf"
+            />
+          </div>
+          <form class="book-search-form js-book-search">
+            <div class="form-element">
+              <label for="bookSearch">Look for books</label>
+              <div class="inline-input">
+                <input id="bookSearch" type="text" />
+                <button class="button-search">Search</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-    <seaction class="search-results js-results"> </seaction>
+    <div class="loader">
+      <div class="loader-content">
+        <img
+          class="loader-image"
+          src="dist/images/turtle.png"
+          alt="Green Turtle"
+        />
+        <h4 class="loader-title">Loading...</h4>
+      </div>
+    </div>
+    <section class="search-results js-results"></section>
     <script src="dist/js/build.min.js"></script>
   </body>
 </html>

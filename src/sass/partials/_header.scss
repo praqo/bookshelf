@@ -1,0 +1,49 @@
+.main-header {
+  background: $light;
+}
+
+.main-header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-form {
+  display: flex;
+  justify-content: center;
+  flex: 1 1 auto;
+}
+
+.logo {
+  font-family: $cursive;
+  font-size: 31px;
+}
+
+.home .header-form {
+  display: none;
+}
+
+.header-nav {
+  display: flex;
+  order: 1;
+}
+
+.nav-link {
+  color: $dark;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-link:hover {
+  border-bottom: 2px solid $dark;
+}
+
+.link-seperator {
+  margin: 0 10px;
+}
+
+.home .home-link,
+.bookshelf .bookshelf-link {
+  border-bottom: 2px solid $dark;
+  pointer-events: none;
+}

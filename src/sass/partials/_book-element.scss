@@ -28,7 +28,6 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 11px 10px 5px 9px;
-  min-height: calc(50vw - 25px);
   width: 48%;
 }
 
@@ -69,4 +68,16 @@
   font-size: 1.25rem;
   line-height: 1.8125rem;
   font-weight: 300;
+}
+
+.search-results {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 700px) {
+  .book-wrapper {
+    width: 43%;
+    margin: 0 15px;
+  }
 }

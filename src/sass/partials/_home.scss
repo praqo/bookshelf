@@ -1,11 +1,12 @@
 .hero-area {
-  display: none;
+  display: block;
+  min-height: 100vh;
   background-color: $orange;
 }
 
-.home .hero-area {
-  display: block;
-  min-height: 100vh;
+.results .hero-area,
+.bookshelf .hero-area {
+  display: none;
 }
 
 .hero-area-inner {
@@ -46,7 +47,7 @@
 
 @media (max-width: 720px) {
   .hero-title {
-    font-size: 27px;
+    font-size: 37px;
   }
 
   .form-element {
@@ -54,5 +55,11 @@
     margin-top: 57px;
     padding: 17px 10px;
     height: auto;
+  }
+}
+
+@media (max-width: 500px) {
+  .hero-image-container {
+    width: 67%;
   }
 }

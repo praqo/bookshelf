@@ -5,24 +5,29 @@ const results = (function () {
     let userData = userDataFunctions.userData;
 
     function updateButton(buttonClicked, isAdding) {
+      console.log(isAdding);
       if (isAdding) {
         buttonClicked.innerText = "Remove from bookshelf";
+        buttonClicked.removeEventListener("click", emitAddBook);
+        buttonClicked.addEventListener("click", emitRemoveBook);
       } else {
         buttonClicked.innerText = "Add to bookshelf";
+        buttonClicked.removeEventListener("click", emitRemoveBook);
+        buttonClicked.addEventListener("click", emitAddBook);
       }
     }
 
     function emitRemoveBook(e) {
       const buttonClicked = e.currentTarget;
-      const parentEl =
-        e.currentTarget.parentNode.parentNode.parentNode.parentNode;
-
+      const parentEl = e.currentTarget.parentNode.parentNode.parentNode;
+      console.log("removing");
       updateButton(buttonClicked, false);
 
       events.emit("removeBook", parentEl.dataset.bookid);
     }
 
     function emitAddBook(e) {
+      console.log("adding");
       const buttonClicked = e.currentTarget;
       const parentEl = e.currentTarget.parentNode.parentNode.parentNode;
       const bookInfo = {

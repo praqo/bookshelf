@@ -1,7 +1,7 @@
 const search = (function () {
-  if (document.querySelector(".js-book-search")) {
+  if (document.querySelectorAll(".js-book-search")) {
     const body = document.querySelector("body");
-    const bookSearchForm = document.querySelector(".js-book-search");
+    const bookSearchForm = document.querySelectorAll(".js-book-search");
     const bookSearchInput = document.querySelector("#bookSearch");
 
     const apiUrl = "http://openlibrary.org/search.json?q=";
@@ -20,11 +20,11 @@ const search = (function () {
 
     function searchBooks(e) {
       e.preventDefault();
-
-      if (!bookSearchInput.value.replace(/ /g, "")) {
+      const searchInput = e.target.querySelector("input");
+      if (!searchInput.value.replace(/ /g, "")) {
         return;
       }
-      const searchValue = bookSearchInput.value.replace(/ /g, "+");
+      const searchValue = searchInput.value.replace(/ /g, "+");
       const data = fetchData(apiUrl + searchValue);
 
       console.log("searching...");
@@ -32,6 +32,12 @@ const search = (function () {
 
     function pageStateChange(page) {
       const pagesArray = ["home", "search", "results", "bookshelf"];
+
+      if (page === "search") {
+        body.classList.add("search");
+        return;
+      }
+
       pagesArray.forEach((item) => {
         if (item !== page) {
           body.classList.remove(item);
@@ -41,7 +47,9 @@ const search = (function () {
       });
     }
 
-    bookSearchForm.addEventListener("submit", searchBooks);
+    bookSearchForm.forEach((item) =>
+      item.addEventListener("submit", searchBooks)
+    );
 
     return {
       pageStateChange,

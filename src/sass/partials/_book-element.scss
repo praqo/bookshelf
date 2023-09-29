@@ -1,3 +1,11 @@
+.bookshelf-area {
+  display: none;
+}
+
+.bookshelf .bookshelf-area {
+  display: block;
+}
+
 .book-wrapper {
   display: flex;
   border-radius: 20px;
@@ -71,6 +79,11 @@
 }
 
 .search-results {
+  display: none;
+}
+
+.results .search-results,
+.grid {
   display: flex;
   flex-wrap: wrap;
 }
@@ -78,6 +91,6 @@
 @media (min-width: 700px) {
   .book-wrapper {
     width: 43%;
-    margin: 0 15px;
+    margin: 0 15px 10px 15px;
   }
 }

@@ -1,15 +1,15 @@
 const bookshelf = (function () {
   if (document.querySelector(".js-results")) {
-    const bookshelfContainer = document.querySelector(".js-results");
     const bookshelfLink = document.querySelector('[data-pageLink="bookshelf"]');
     const homeLink = document.querySelector('[data-pageLink="home"]');
+    const bookshelfArea = document.querySelector(".js-bookshelfArea");
     let userData = userDataFunctions.userData;
 
     function emitRemoveBook(e) {
       const buttonClicked = e.currentTarget;
       const parentEl = buttonClicked.parentNode.parentNode.parentNode;
 
-      bookshelfContainer.removeChild(parentEl);
+      bookshelfArea.removeChild(parentEl);
 
       events.emit("removeBook", parentEl.dataset.bookid);
 
@@ -19,7 +19,7 @@ const bookshelf = (function () {
     }
 
     function emptyBookshelf() {
-      bookshelfContainer.innerHTML = `<div class="container">
+      bookshelfArea.innerHTML = `<div class="container">
   <p>Your bookshelf is empty</p>
 </div>`;
     }
@@ -34,7 +34,7 @@ const bookshelf = (function () {
           htmlToAppend += results.createBookEl(item);
         });
 
-        bookshelfContainer.innerHTML = htmlToAppend;
+        bookshelfArea.innerHTML = htmlToAppend;
 
         document.querySelectorAll(".js-addRemovebook").forEach((item) => {
           item.addEventListener("click", emitRemoveBook);

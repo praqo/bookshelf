@@ -15,6 +15,8 @@ const search = (function () {
         events.emit("searchDataChange", data);
       } catch (error) {
         console.error(error);
+        alert("Error please try again later");
+        pageStateChange("home");
       }
     }
 
@@ -28,12 +30,14 @@ const search = (function () {
       const data = fetchData(apiUrl + searchValue);
 
       console.log("searching...");
+      searchInput.value = "";
     }
 
     function pageStateChange(page) {
       const pagesArray = ["home", "search", "results", "bookshelf"];
 
       if (page === "search") {
+        window.scrollTo(0, 0);
         body.classList.add("search");
         return;
       }

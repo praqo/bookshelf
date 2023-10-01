@@ -1,0 +1,29 @@
+.main-footer {
+  background-color: $dark;
+  color: $light;
+  padding: 80px 0;
+}
+
+.footer-columns {
+  display: flex;
+}
+
+.footer-columns:last-child {
+  margin: 0;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  margin: 0 137px 0 0;
+}
+
+.column:last-child {
+  margin: 0;
+}
+
+.footer-link {
+  color: $light;
+  margin: 0 0 25px 0;
+  font-size: 25px;
+}

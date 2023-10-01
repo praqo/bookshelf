@@ -8,10 +8,15 @@ const results = (function () {
       console.log(isAdding);
       if (isAdding) {
         buttonClicked.innerText = "Remove from bookshelf";
+        buttonClicked.classList.remove("add-button");
+        buttonClicked.classList.add("remove-button");
         buttonClicked.removeEventListener("click", emitAddBook);
         buttonClicked.addEventListener("click", emitRemoveBook);
       } else {
         buttonClicked.innerText = "Add to bookshelf";
+
+        buttonClicked.classList.remove("remove-button");
+        buttonClicked.classList.add("add-button");
         buttonClicked.removeEventListener("click", emitRemoveBook);
         buttonClicked.addEventListener("click", emitAddBook);
       }
@@ -72,9 +77,10 @@ const results = (function () {
     }
 
     function createBookEl(item) {
-      return `<a class="book-wrapper" data-bookid="${
-        item.id
-      }" data-booktitle="${item.title}" data-bookauthor="${
+      return `<div
+            class="grid-item"><a class="book-wrapper" data-bookid="${
+              item.id
+            }" data-booktitle="${item.title}" data-bookauthor="${
         item.author
       }" data-bookcover="${item.cover}">
         <div class="book-image-container">
@@ -96,7 +102,8 @@ const results = (function () {
           }</div>
           <time class="book-id">${item.id}</time>
         </div>
-      </a>`;
+      </a>
+      </div>`;
     }
 
     function updateUserData(data) {

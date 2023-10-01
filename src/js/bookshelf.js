@@ -7,11 +7,17 @@ const bookshelf = (function () {
 
     function emitRemoveBook(e) {
       const buttonClicked = e.currentTarget;
-      const parentEl = buttonClicked.parentNode.parentNode.parentNode;
+      const parentEl =
+        buttonClicked.parentNode.parentNode.parentNode.parentNode;
+
+      console.log(parentEl);
 
       bookshelfArea.removeChild(parentEl);
 
-      events.emit("removeBook", parentEl.dataset.bookid);
+      events.emit(
+        "removeBook",
+        buttonClicked.parentNode.parentNode.parentNode.dataset.bookid
+      );
 
       if (userData.booksData.length <= 0) {
         emptyBookshelf();

@@ -2,13 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&family=Courgette&family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="dist/css/bookshelf.css" />
+    <link
+      rel="stylesheet"
+      href="dist/css/bookshelf.css"
+    />
     <title>Bookshelf | organize your books digitally</title>
   </head>
   <body class="home">
@@ -20,7 +26,12 @@
           </div>
 
           <nav class="header-nav">
-            <a href="#" class="nav-link home-link" data-pageLink="home">Home</a>
+            <a
+              href="#"
+              class="nav-link home-link"
+              data-pageLink="home"
+              >Home</a
+            >
             <span class="link-seperator">/</span>
             <a
               href="#"
@@ -34,7 +45,10 @@
               <div class="form-element">
                 <label for="bookSearch">Look for books</label>
                 <div class="inline-input">
-                  <input id="bookSearch" type="text" />
+                  <input
+                    id="bookSearch"
+                    type="text"
+                  />
                   <button class="button-search">Search</button>
                 </div>
               </div>
@@ -58,7 +72,10 @@
             <div class="form-element">
               <label for="bookSearch">Look for books</label>
               <div class="inline-input">
-                <input id="bookSearch" type="text" />
+                <input
+                  id="bookSearch"
+                  type="text"
+                />
                 <button class="button-search">Search</button>
               </div>
             </div>
@@ -83,9 +100,42 @@
     </div>
     <section class="search-results">
       <div class="container">
-        <div class="search-results-inner js-results grid"></div>
+        <div class="search-results-inner">
+          <h1 class="section-title">Search Results</h1>
+          <div class="search-results-container js-results grid"></div>
+        </div>
       </div>
     </section>
+    <footer class="main-footer">
+      <div class="container">
+        <div class="main-footer-inner">
+          <div class="footer-columns">
+            <div class="column">
+              <h5>About</h5>
+              <a
+                href="https://github.com/praqo"
+                class="footer-link"
+                >GitHub</a
+              >
+              <a
+                href="https://github.com/praqo"
+                class="footer-link"
+                >praqo</a
+              >
+              <div class="footer-link">email</div>
+            </div>
+            <div class="column">
+              <h5>Data</h5>
+              <a
+                href="https://openlibrary.org/developers/api"
+                class="footer-link"
+                >Open Library API</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
     <script src="dist/js/build.min.js"></script>
   </body>
 </html>

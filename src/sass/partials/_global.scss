@@ -101,3 +101,19 @@ body.search {
   overflow: hidden;
   height: 100vh;
 }
+
+.add-button,
+.remove-button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: $light;
+}
+
+.add-button {
+  background-color: $green-0;
+}
+
+.remove-button {
+  background-color: $orange;
+}

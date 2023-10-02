@@ -76,6 +76,13 @@ label {
 .inline-input {
   display: flex;
   margin: 0 15px;
+  width: 100%;
+}
+
+.inline-input input {
+  flex: 1 1 auto;
+  min-width: 200px;
+  width: 0;
 }
 
 .container {
@@ -116,4 +123,8 @@ body.search {
 
 .remove-button {
   background-color: $orange;
+}
+
+.text-center {
+  text-align: center;
 }

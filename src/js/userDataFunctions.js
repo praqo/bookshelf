@@ -22,8 +22,6 @@ const userDataFunctions = (function () {
       booksData: [...userData.booksData, bookInfo],
     };
 
-    console.log(userData);
-
     updateLocalStorage();
   }
 

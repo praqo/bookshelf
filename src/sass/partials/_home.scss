@@ -50,11 +50,21 @@
     font-size: 37px;
   }
 
-  .form-element {
+  .book-search-form {
+    width: 100%;
+  }
+
+  .book-search-form .form-element {
     flex-direction: column;
     margin-top: 57px;
     padding: 17px 10px;
     height: auto;
+    width: 100%;
+  }
+
+  .form-element label {
+    margin-bottom: 10px;
+    width: auto;
   }
 }
 

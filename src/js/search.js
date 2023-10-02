@@ -11,7 +11,7 @@ const search = (function () {
       try {
         const response = await fetch(url);
         const data = await response.json();
-        console.log(data);
+
         events.emit("searchDataChange", data);
       } catch (error) {
         console.error(error);

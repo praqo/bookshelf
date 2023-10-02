@@ -5,7 +5,6 @@ const results = (function () {
     let userData = userDataFunctions.userData;
 
     function updateButton(buttonClicked, isAdding) {
-      console.log(isAdding);
       if (isAdding) {
         buttonClicked.innerText = "Remove from bookshelf";
         buttonClicked.classList.remove("add-button");

@@ -10,8 +10,6 @@ const bookshelf = (function () {
       const parentEl =
         buttonClicked.parentNode.parentNode.parentNode.parentNode;
 
-      console.log(parentEl);
-
       bookshelfArea.removeChild(parentEl);
 
       events.emit(
@@ -25,8 +23,13 @@ const bookshelf = (function () {
     }
 
     function emptyBookshelf() {
-      bookshelfArea.innerHTML = `<div class="container">
+      bookshelfArea.innerHTML = `<div class="container text-center">
   <p>Your bookshelf is empty</p>
+  <img
+              class="hero-image"
+              src="dist/images/bookshelf.png"
+              alt="a bookshelf"
+            />
 </div>`;
     }
 

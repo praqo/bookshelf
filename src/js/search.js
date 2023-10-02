@@ -4,7 +4,7 @@ const search = (function () {
     const bookSearchForm = document.querySelectorAll(".js-book-search");
     const bookSearchInput = document.querySelector("#bookSearch");
 
-    const apiUrl = "http://openlibrary.org/search.json?q=";
+    const apiUrl = "https://openlibrary.org/search.json?q=";
 
     async function fetchData(url) {
       pageStateChange("search");

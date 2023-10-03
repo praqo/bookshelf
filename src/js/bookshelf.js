@@ -1,7 +1,7 @@
 const bookshelf = (function () {
   if (document.querySelector(".js-results")) {
     const bookshelfLink = document.querySelector('[data-pageLink="bookshelf"]');
-    const homeLink = document.querySelector('[data-pageLink="home"]');
+    const homeLinks = document.querySelectorAll('[data-pageLink="home"]');
     const bookshelfArea = document.querySelector(".js-bookshelfArea");
     let userData = userDataFunctions.userData;
 
@@ -56,9 +56,11 @@ const bookshelf = (function () {
       populateData(userData.booksData);
     });
 
-    homeLink.addEventListener("click", (e) => {
-      e.preventDefault();
-      search.pageStateChange("home");
+    homeLinks.forEach(link => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        search.pageStateChange("home");
+      });
     });
 
     function updateUserData(data) {

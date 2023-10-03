@@ -17,9 +17,11 @@
 }
 
 .logo {
+  color: $dark;
   font-family: $cursive;
   font-size: 31px;
   margin: 0;
+  text-decoration: none;
 }
 
 .home .header-form {
@@ -48,6 +50,10 @@
 .home .home-link,
 .bookshelf .bookshelf-link {
   border-bottom: 2px solid $dark;
+  pointer-events: none;
+}
+
+.home .logo {
   pointer-events: none;
 }
 

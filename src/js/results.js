@@ -72,7 +72,7 @@ const results = (function () {
         }
       });
 
-      search.pageStateChange("results");
+      events.emit('pageChange', 'results');
     }
 
     function createBookEl(item) {

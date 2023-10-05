@@ -27,10 +27,11 @@ const search = (function () {
         return;
       }
       const searchValue = searchInput.value.replace(/ /g, "+");
-      const data = fetchData(apiUrl + searchValue);
 
       console.log("searching...");
       searchInput.value = "";
+
+      events.emit('searchData', apiUrl + searchValue)
     }
 
     function pageStateChange(page) {
@@ -55,8 +56,7 @@ const search = (function () {
       item.addEventListener("submit", searchBooks)
     );
 
-    return {
-      pageStateChange,
-    };
+    events.on('searchData', fetchData);
+    events.on('pageChange', pageStateChange);
   }
 })();

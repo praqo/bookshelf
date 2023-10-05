@@ -49,7 +49,8 @@ const bookshelf = (function () {
           item.addEventListener("click", emitRemoveBook);
         });
       }
-      search.pageStateChange("bookshelf");
+      
+      events.emit('pageChange', 'bookshelf');
     }
     bookshelfLink.addEventListener("click", (e) => {
       e.preventDefault();
@@ -59,7 +60,8 @@ const bookshelf = (function () {
     homeLinks.forEach(link => {
       link.addEventListener("click", (e) => {
         e.preventDefault();
-        search.pageStateChange("home");
+        
+        events.emit('pageChange', 'home');
       });
     });
 

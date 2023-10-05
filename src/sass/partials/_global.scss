@@ -83,6 +83,7 @@ label {
   flex: 1 1 auto;
   min-width: 200px;
   width: 0;
+  border-radius: 10px 0 0 0;
 }
 
 .container {
@@ -94,8 +95,10 @@ label {
 .button-search {
   padding: 0 10px;
   background: $green-0;
-  border-radius: 0 2px 2px 0;
+  border-radius: 0 0px 10px 0;
+  color:#131313;
   cursor: pointer;
+  transition: all .3s ease-in-out;
 }
 
 .button-search:hover,
@@ -122,7 +125,7 @@ body.search {
 }
 
 .remove-button {
-  background-color: $orange;
+  background-color: $red;
 }
 
 .text-center {

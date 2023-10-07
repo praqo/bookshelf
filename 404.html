@@ -17,11 +17,11 @@
       <div class="container">
         <div class="main-header-inner">
           <div class="logo-container">
-            <a href="/" class="logo">Bookshelf</a>
+            <a href="#/" class="logo home-page">Bookshelf</a>
           </div>
 
           <nav class="header-nav">
-            <a href="/" class="nav-link" data-pageLink="home">Home</a>
+            <a href="#/" class="nav-link home-page">Home</a>
           </nav>
         </div>
       </div>
@@ -51,6 +51,25 @@
       </div>
     </div>
   </footer>
-  <script src="dist/js/build.min.js"></script>
+  <script>
+    const homeLinks = document.querySelectorAll('.home-page');
+    let homePathname;
+
+    if(window.location.pathname.length <= 1) {
+      homePathname = window.location.pathname;
+    } else if(window.location.pathname.length === 2) {
+      homePathname = '/';
+    } else {
+      let charArr = window.location.pathname.split('/')[1];
+
+      homePathname = `/${charArr}/`
+      console.log(window.location.pathname.split('/')[1]);
+      console.log(charArr);
+    }
+
+    homeLinks.forEach(link => {
+      link.href = window.location.origin + homePathname;
+    });
+  </script>
 </body>
 </html>

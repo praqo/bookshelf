@@ -42,7 +42,7 @@ const routing = (function() {
         const pageInfo = parseURL();
 
         if(pageInfo.page === 'mybookshelf' || 'mybookshel') {
-            events.emit('mybookshelf', userDataFunctions.userData.booksData);
+            events.emit('mybookshelf', userDataFunctions.getUserData());
         }
 
         if(pageInfo.page === 'search') {

@@ -13,6 +13,7 @@ const userDataFunctions = (function () {
   function updateLocalStorage() {
     localStorage.setItem("bookshelfApp", JSON.stringify(userData));
     events.emit("userDataChange", userData);
+    console.log(userData)
   }
 
   function addBook(bookInfo) {
@@ -34,10 +35,14 @@ const userDataFunctions = (function () {
     updateLocalStorage();
   }
 
+  function getUserData() {
+    return userData
+  }
+
   events.on("addBook", addBook);
   events.on("removeBook", removeBook);
 
   return {
-    userData,
+    getUserData,
   };
 })();

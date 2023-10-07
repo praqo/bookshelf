@@ -3,7 +3,7 @@ const bookshelf = (function () {
     const bookshelfLink = document.querySelector('[data-pageLink="bookshelf"]');
     const homeLinks = document.querySelectorAll('[data-pageLink="home"]');
     const bookshelfArea = document.querySelector(".js-bookshelfArea");
-    let userData = userDataFunctions.userData;
+    let userData = userDataFunctions.getUserData();
 
     function emitRemoveBook(e) {
       const buttonClicked = e.currentTarget;
@@ -33,7 +33,8 @@ const bookshelf = (function () {
 </div>`;
     }
 
-    function populateData(data) {
+    function populateData(userData) {
+      const data = userData.booksData
       let htmlToAppend = "";
 
       if (data.length <= 0) {

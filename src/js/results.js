@@ -2,7 +2,7 @@ const results = (function () {
   if (document.querySelector(".js-results")) {
     const body = document.querySelector("body");
     const resultsContainer = document.querySelector(".js-results");
-    let userData = userDataFunctions.userData;
+    let userData = userDataFunctions.getUserData();
 
     function updateButton(buttonClicked, isAdding) {
       if (isAdding) {
@@ -47,6 +47,7 @@ const results = (function () {
     }
 
     function populateData(data) {
+      console.log(data)
       let htmlToAppend = "";
       data.docs.forEach((item) => {
         const itemInfo = {

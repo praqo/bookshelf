@@ -49,26 +49,25 @@ const bookshelf = (function () {
           item.addEventListener("click", emitRemoveBook);
         });
       }
+
+      console.log('populating books')
       
       events.emit('pageChange', 'bookshelf');
     }
-    bookshelfLink.addEventListener("click", (e) => {
-      e.preventDefault();
-      populateData(userData.booksData);
-    });
 
-    homeLinks.forEach(link => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
-        
-        events.emit('pageChange', 'home');
-      });
-    });
+    // homeLinks.forEach(link => {
+    //   link.addEventListener("click", (e) => {
+    //     e.preventDefault();
+    //     console.log('click home')
+    //     return false;
+    //   });
+    // });
 
     function updateUserData(data) {
       userData = data;
     }
 
     events.on("userDataChange", updateUserData);
+    events.on('mybookshelf', populateData);
   }
 })();

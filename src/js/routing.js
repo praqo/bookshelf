@@ -44,6 +44,10 @@ const routing = (function() {
         if(pageInfo.page === 'mybookshelf' || 'mybookshel') {
             events.emit('mybookshelf', userDataFunctions.userData.booksData);
         }
+
+        if(pageInfo.page === 'search') {
+            events.emit('searchData', pageInfo.searchQuery)
+        }
     }
 
     window.addEventListener('DOMContentLoaded', function() {
@@ -54,10 +58,17 @@ const routing = (function() {
         console.log('DOMContentLoaded')
     });
 
+    function addURL(pageInfo) {
+        console.log(`${window.location.origin + window.location.pathname}`)
+        history.pushState({}, '', `${window.location.origin + window.location.pathname}#/${pageInfo.page}/${pageInfo.query}`);
+
+        routePage(pageInfo);
+    }
+
     window.addEventListener('hashchange', function() {
         console.log('hashchange')
 
-        if(((window.location.origin + window.location.pathname) === window.location.href) ||((window.location.origin + '/#/') === window.location.href)) {
+        if(((window.location.origin + window.location.pathname) === window.location.href) ||((window.location.origin + window.location.pathname + '#/') === window.location.href)) {
             console.log('going home')
             routePage('home');
 
@@ -74,4 +85,5 @@ const routing = (function() {
 
     events.on('urlChange', routePage);
     events.on('pageChange', pageStateChange);
+    events.on('addURL', addURL);
 })();
